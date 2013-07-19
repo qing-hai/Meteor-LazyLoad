@@ -36,7 +36,7 @@ or
 ```
 
 
-###LazyLoad.require = function(dependency, [onReady])
+###LazyLoad.require(dependency, [onReady])
 `dependency` - String
 `onReady` - Optional callback - is called when all files needed by the dependency is loaded
 
