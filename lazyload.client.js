@@ -99,9 +99,6 @@ LazyLoad = (function() {
 						head.appendChild(link);
 
 						numFilesLoaded++;
-							// If all files are loaded then callback
-	 					if (numFilesToLoad == numFilesLoaded)
-	 						onReady();
 					}
 				}
 			}
