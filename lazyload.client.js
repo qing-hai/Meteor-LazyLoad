@@ -77,17 +77,32 @@ LazyLoad = (function() {
 					numFilesToLoad++;
 
 					self._loadedFiles[fileToLoad] = false;
-					var script = document.createElement('script');
-					script.onload = function() {
-						self._loadedFiles[fileToLoad] = true;
+					var isCss=fileToLoad.slice(-4).toLowerCase()===".css";
+
+					if (!isCss){
+						var script = document.createElement('script');
+						script.onload = function() {
+							self._loadedFiles[fileToLoad] = true;
+							numFilesLoaded++;
+							// If all files are loaded then callback
+							if (numFilesToLoad == numFilesLoaded)
+								onReady();
+						};
+						script.type = 'text/javascript';
+						script.src = fileToLoad;
+						head.appendChild(script);
+					} else {
+						var link = document.createElement('link');
+   						self._loadedFiles[fileToLoad] = true;
+						link.rel = 'stylesheet';
+						link.href = fileToLoad;
+						head.appendChild(link);
+
 						numFilesLoaded++;
-						// If all files are loaded then callback
-						if (numFilesToLoad == numFilesLoaded)
-							onReady();
-					};
-					script.type = 'text/javascript';
-					script.src = fileToLoad;
-					head.appendChild(script);
+							// If all files are loaded then callback
+	 					if (numFilesToLoad == numFilesLoaded)
+	 						onReady();
+					}
 				}
 			}
 		}
