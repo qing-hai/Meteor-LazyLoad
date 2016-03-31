@@ -1,9 +1,12 @@
 Package.describe({
+  name:"qinghai:lazyload",
   summary: "\u001b[32mv0.0.1\n"+
   		   "\u001b[33m-----------------------------------------\n"+
   		   "\u001b[0m Adds support for lazyloading javascript \n"+
   		   "\u001b[0m files via the public folder             \n"+
-  		   "\u001b[33m-------------------------------------RaiX\n"
+  		   "\u001b[33m-------------------------------------RaiX\n",
+   git:  "https://github.com/qing-hai/Meteor-LazyLoad/tree/0.0.1.5"        
+             
 });
 
 Package.on_use(function (api) {
